@@ -56,7 +56,7 @@ const AuthenticatedApp = () => {
 
   // Render the main app - /center routes require login via ProtectedRoute
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+   <Routes>
       {/* Add your page Route elements here */}
       <Route path="/" element={<Home />} />
       <Route path="/under-construction" element={<UnderConstruction />} />
@@ -108,7 +108,7 @@ function App() {
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
-        <Router>
+        <Router basename={import.meta.env.BASE_URL}>
           <ScrollToTop />
           <AuthenticatedApp />
         </Router>
