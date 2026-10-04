@@ -1,0 +1,65 @@
+{
+  "name": "Meeting",
+  "type": "object",
+  "properties": {
+    "number": {
+      "type": "number"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "why": {
+      "type": "string"
+    },
+    "speakerName": {
+      "type": "string"
+    },
+    "speakerBio": {
+      "type": "string"
+    },
+    "points": {
+      "type": "string"
+    },
+    "takeaway": {
+      "type": "string"
+    },
+    "registrationLink": {
+      "type": "string"
+    },
+    "showInLobby": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "slug",
+    "title"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "GuestbookEntry",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "message": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "exhibition_item_id": {
+      "type": "string",
+      "description": "slug of the linked ExhibitionItem (optional)"
+    },
+    "is_approved": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "message"
+  ],
+  "rls": {
+    "read": {},
+    "create": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

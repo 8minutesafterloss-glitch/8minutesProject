@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@property --tx { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --ty { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@property --rot { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+    --primary: 263 35% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 30% 96%;
+    --secondary-foreground: 263 35% 27%;
+    --muted: 270 30% 96%;
+    --muted-foreground: 260 8% 45%;
+    --accent: 268 40% 92%;
+    --accent-foreground: 263 35% 27%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 25% 90%;
+    --input: 270 25% 90%;
+    --ring: 263 35% 27%;
+    --radius: 1rem;
+    --font-heading: 'Heebo', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Heebo', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Frank Ruhl Libre', 'Heebo', ui-serif, Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible keyboard focus ring for all interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary rounded-sm;
+  }
+}
+
+@layer utilities {
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #46366c 0%, #634f96 50%, #7b5fb8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-gradient-purple {
+    background: linear-gradient(135deg, #46366c 0%, #634f96 50%, #7b5fb8 100%);
+  }
+
+  .bg-soft-lavender {
+    background: radial-gradient(ellipse at top, rgba(123, 95, 184, 0.10) 0%, transparent 60%), #ffffff;
+  }
+
+  @keyframes caption-grow {
+    from { transform: scale(1); }
+    to { transform: scale(2); }
+  }
+  .caption-grow {
+    animation: caption-grow 3.75s ease-out forwards;
+    transform-origin: center;
+    white-space: nowrap;
+  }
+
+  @keyframes caption-shrink {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(0.3); opacity: 0.5; }
+  }
+  .caption-shrink {
+    animation: caption-shrink 3.75s ease-out forwards;
+    transform-origin: center;
+    white-space: nowrap;
+  }
+
+  @keyframes grow-wide {
+    from { transform: scale(0.6); filter: blur(8px); opacity: 0; }
+    to { transform: scale(1); filter: blur(0); opacity: 1; }
+  }
+  .grow-wide {
+    animation: grow-wide 1.8s ease-out forwards;
+    transform-origin: center;
+  }
+
+  @keyframes char-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .char-in {
+    opacity: 0;
+    animation: char-in 0.3s ease-out forwards;
+  }
+
+  @keyframes scatter-out {
+    from { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+    to { transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg)); opacity: 0; }
+  }
+  .scatter-out {
+    animation: scatter-out 0.4s ease-out forwards;
+  }
+
+  @keyframes bounce-in {
+    0% { transform: scale(0.3); opacity: 0; }
+    60% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  .bounce-in {
+    animation: bounce-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+    50% { text-shadow: 0 0 24px rgba(255, 255, 255, 0.7); }
+  }
+
+  @keyframes intro-grow-fade {
+    0% { transform: scale(0.04); opacity: 0; }
+    18% { opacity: 1; }
+    72% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  .intro-grow-fade {
+    animation: intro-grow-fade 1.8s forwards ease-out;
+    transform-origin: center;
+    white-space: nowrap;
+  }
+}

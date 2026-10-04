@@ -1,0 +1,60 @@
+{
+  "name": "AdminTask",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "assignee": {
+      "type": "string",
+      "enum": [
+        "\u05e0\u05d0\u05d5\u05e8\u05d4",
+        "\u05e8\u05d5\u05e0\u05d9"
+      ]
+    },
+    "priority": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

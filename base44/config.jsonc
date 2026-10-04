@@ -1,0 +1,9 @@
+{
+  "name": "\u05e4\u05e8\u05d5\u05d9\u05e7\u05d8 8 \u05d3\u05e7\u05d5\u05ea",
+  "site": {
+    "installCommand": "npm install",
+    "buildCommand": "npm run build",
+    "serveCommand": "npm run dev",
+    "outputDirectory": "./dist"
+  }
+}

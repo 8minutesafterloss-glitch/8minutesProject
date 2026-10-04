@@ -1,0 +1,42 @@
+{
+  "description": "\u05e9\u05d5\u05dc\u05d7 \u05de\u05d9\u05d9\u05dc \u05dc\u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05d1\u05db\u05dc \u05e4\u05e2\u05dd \u05e9\u05e0\u05d5\u05e1\u05e3 \u05e8\u05e9\u05dd \u05d7\u05d3\u05e9 \u05dc\u05e1\u05e4\u05e8 \u05d4\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd",
+  "name": "Guestbook Notification",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "GuestbookEntry"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "guestbook_notification",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "send_notification": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "notifyGuestbookEntry",
+            "args": {
+              "name": "${ .trigger.data.name }",
+              "message": "${ .trigger.data.message }",
+              "exhibition_item_id": "${ .trigger.data.exhibition_item_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "\u05e9\u05dc\u05d9\u05d7\u05ea \u05d4\u05d5\u05d3\u05e2\u05ea \u05de\u05d9\u05d9\u05dc",
+            "description": "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e2\u05dc \u05e8\u05e9\u05dd \u05d7\u05d3\u05e9 \u05d1\u05e1\u05e4\u05e8 \u05d4\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd"
+          }
+        }
+      }
+    ]
+  }
+}
